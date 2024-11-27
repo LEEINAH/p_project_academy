@@ -20,6 +20,12 @@ public class ProductController {
 		
 		return "WEB-INF/product/productList"; 
 	}
+	
+	@RequestMapping(value="productContent.aws", method=RequestMethod.GET)
+	public String productContent() {
+		
+		return "WEB-INF/product/productContent"; 
+	}
 
 	
 }

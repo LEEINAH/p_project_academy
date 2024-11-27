@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+/* 상품 List 화면 */
+.product-option1-h2 {
+	font-size: 25px; 
+	font-weight: 600; 
+	color: #1d1d1f; 
+	padding-left: 385px;
+	padding-bottom: 50px;
+}
+
+.product-list-main {
+	display: flex;
+	padding-bottom: 70px;
+}
+
+.list-top-rightdiv {
+	display: flex;
+	align-items: center;
+	padding-left: 385px;
+}
+
+.list-top-rightdiv strong {
+	display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 46px;
+    height: 32px;
+    padding: 0 12px;
+    background: #fff;
+    border: 1px solid #e2e2e2;
+    border-radius: 6px;
+    font-size: 15px;
+    color: #1d1d1f;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.list-top-rightdiv span {
+	margin-left: 8px;
+	font-size: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    color: #888;
+}
+
+.list-top-leftdiv {
+	display: flex;
+	align-items: center;
+	padding-left: 1120px;
+}
+
+.list-top-leftdiv select {
+	min-width: 120px;
+    height: 32px;
+    font-size: 14px;
+    padding-left: 15px;
+    border: 0;
+    background-repeat: no-repeat;
+    background-size: 9px;
+    background-position: center right 10px;
+    box-sizing: border-box;
+    outline: none;
+    vertical-align: middle;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+}
+
+.list-top-leftdiv option {
+	font-weight: normal;
+    display: block;
+    padding-block-start: 0px;
+    padding-block-end: 1px;
+    min-block-size: 1.2em;
+    padding-inline: 2px;
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+
+
+/* 상품 상세 페이지 */
+.product-content-main {
+	display: flex;
+}
+
+.product-content-main li {
+	list-style: none;
+	width: 50%;
+}
+
+.product-img {
+	max-width: 100%;
+    cursor: pointer;
+    vertical-align: middle;
+    border: none;
+    margin: 0;
+    padding-left: 400px;
+    padding-top: 70px;
+}
+
+.product-content {
+	margin-top: 80px;
+}
+
+/* 제품 이미지와 정보를 포함한 전체 컨테이너 */
+.product-container {
+  /* 수평으로 배치 (이미지와 텍스트가 나란히 표시) */
+  display: flex;
+  /* 컨텐츠가 수평으로 배치되도록 방향을 설정 */
+  flex-direction: row;
+  /* 두 영역 사이의 간격을 자동으로 조정 */
+  justify-content: space-between;
+  /* 상단에 맞추어 배치 */
+  align-items: flex-start;
+  /* 왼쪽과 오른쪽에 여백을 추가 */
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+/* 오른쪽 제품 정보를 담은 영역 */
+.product-info {
+  /* 왼쪽 이미지를 제외한 부분이 차지할 공간 */
+  flex: 1;
+  /* 오른쪽 영역의 최대 너비를 600px로 제한 */
+  max-width: 600px;
+}
+
+/* 제품 제목 스타일 */
+.product-title {
+  /* 제목의 크기 */
+  font-size: 22px;
+  /* 제목 아래에 간격을 추가 */
+  margin-bottom: 10px;
+}
+
+/* 제품 설명 스타일 */
+.product-description {
+  /* 설명의 크기 */
+  font-size: 14px;
+  /* 설명의 색상 */
+  color: #777;
+  /* 설명과 다른 정보 사이에 간격을 추가 */
+  margin-bottom: 20px;
+}
+
+/* 제품 세부 사항 영역 스타일 */
+.product-details {
+  /* 세부 사항 텍스트의 크기 */
+  font-size: 16px;
+}
+
+/* 레이블(미니샵, 판매가 등) 스타일 */
+.label {
+	font-size: 14px;
+}
+
+/* 색상 선택 드롭다운 메뉴 스타일 */
+.product-details select {
+  /* 드롭다운 메뉴의 상단 여백 */
+  margin-top: 5px;
+  /* 드롭다운 메뉴의 내부 여백 */
+  padding: 5px;
+  border: 1px solid #ccc;
+  width: 400px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -27,7 +27,7 @@
 			<img src="/resources/logo/KnitLogo.jpg" class="rounded" alt="Knit Logo" style="display: inline-block; width: 200px; height: auto; margin:0 auto; padding: 10px 0px 0px 0px">
 		</a>
 		<div class="btn-group" role="group" aria-label="Basic outlined example">
-		  <button type="button" class="btn btn-platform" >스토어</button>
+		  <button type="button" class="btn btn-platform" onclick="location.href='http://localhost/index.jsp';" >스토어</button>
 		  <button type="button" class="btn btn-platform" onclick="location.href='<%=request.getContextPath()%>/community/communitymain.aws';">커뮤니티</button>
 		</div>
 		
