@@ -1,0 +1,220 @@
+@charset "UTF-8";
+
+/* 장바구니 목록 페이지 */
+.cart-title-div {
+	display: flex;
+	margin: 0 auto;
+	width: 1200px;
+	height: 180px;
+}
+
+.cart-title-div h2 {
+	font-size: 30px; 
+	font-weight: 600; 
+	color: #1d1d1f; 
+	margin: 0 auto;
+	padding: 70px;
+}
+
+.cart-list-div {
+	display: flex;
+	margin: 0 auto;
+	width: 1500px;
+}
+
+.cart-list-div th {
+	background-color: lightgray;
+	width: 1500px;
+	height: 60px;
+	padding: 20px;
+}
+
+.cart-list-div td {
+	height: 60px;
+	border-bottom: 1px solid lightgray;
+	padding: 20px;
+}
+
+.check {
+	width: 10%; /* No는 좁게 */
+    text-align: center;
+    padding-top: 6px;
+}
+
+.img {
+	width: 10%; /* No는 좁게 */
+    text-align: center;
+}
+
+.product-ifm {
+	width: 50%; /* 제목이 가장 넓음 */	
+	text-align: center;
+}
+
+.product-cnt {
+	width: 5%;
+    text-align: center;	
+}
+
+.price {
+	width: 10%;
+    text-align: center;
+    font-weight: bold;	
+}
+
+.d-price {
+	width: 10%;
+    text-align: center;
+    font-weight: bold;
+}
+
+.delete {
+	width: 5%;
+    text-align: center;
+}
+
+/* 기본 스타일 */
+.check-container {
+	display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+/* 숨겨진 체크박스 */
+.check-container input[type="checkbox"] {
+    display: none;
+}
+
+/* 초기 상태: 빈 체크 아이콘 */
+.check-container svg.unchecked {
+	display: inline-block;
+}
+
+.check-container svg.checked {
+	display: none;
+}
+
+/* 체크박스가 체크된 경우 */
+.check-container input[type="checkbox"]:checked + svg.unchecked {
+	display: none;
+}
+
+.check-container input[type="checkbox"]:checked + svg + svg.checked {
+	display: inline-block;
+}
+
+.product-ifm-td {
+	
+}
+
+.product-title {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+/* 수량 조절 버튼 */
+.quantity-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    width: 100px;
+}
+
+.quantity-box button {
+    width: 60%;
+    height: 30px;
+    border: none;
+    background-color: #f9f9f9;
+    color: #333;
+    font-size: 18px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.quantity-box button:hover {
+    background-color: #e6e6e6;
+}
+
+.quantity-box .quantity-input {
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    border: none;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+    font-size: 16px;
+}
+
+/* 결제 비용 */
+.cart-price-div {
+	display: flex;
+	margin: 0 auto;
+	margin-top: 200px;
+	margin-bottom: 100px;
+	width: 1500px;
+}
+
+.cart-price-div th {
+	background-color: lightgray;
+	width: 1500px;
+	height: 60px;
+	padding: 30px;
+	padding-left: 50px;
+}
+
+.cart-price-div td {
+	height: 60px;
+	border-bottom: 1px solid lightgray;
+	padding: 30px;
+}
+
+.total-price {
+	text-align: center;
+}
+
+/* 결제 버튼 */
+/* 공통 스타일 */
+.button-group {
+    display: flex;
+    width: 400px;
+}
+
+.button-group .btn {
+    flex: 1; /* 버튼의 너비를 동일하게 설정 */
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    text-align: center;
+    background-color: #fff;
+    color: #333;
+    height: 70px;
+    border-radius: 0;
+}
+
+/* 왼쪽 버튼 스타일 */
+.button-group .btn-all {
+    background-color: #333; /* 검은 배경 */
+    color: #fff; /* 흰 글씨 */
+    border-right: none; /* 버튼 사이의 경계 제거 */
+    margin-right: 10px;
+}
+
+/* 오른쪽 버튼 스타일 */
+.button-group .btn-selected {
+    background-color: #fff; /* 흰 배경 */
+    color: #333; /* 검은 글씨 */
+}
+
+
+
+
+
+
+
+
+

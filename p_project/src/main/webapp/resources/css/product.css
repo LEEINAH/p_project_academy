@@ -1,12 +1,8 @@
 @charset "UTF-8";
 
 /* 상품 List 화면 */
-.product-option1-h2 {
-	font-size: 25px; 
-	font-weight: 600; 
-	color: #1d1d1f; 
-	padding-left: 385px;
-	padding-bottom: 50px;
+.product-option-h2 {
+	
 }
 
 .product-list-main {
@@ -122,6 +118,7 @@
   /* 왼쪽과 오른쪽에 여백을 추가 */
   margin-left: 20px;
   margin-right: 20px;
+  padding-top: 20px;
 }
 
 /* 오른쪽 제품 정보를 담은 영역 */
@@ -170,12 +167,6 @@
   border: 1px solid #ccc;
   width: 400px;
 }
-
-
-
-
-
-
 
 
 

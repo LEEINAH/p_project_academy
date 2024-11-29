@@ -15,10 +15,22 @@ public class ProductController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 	
-	@RequestMapping(value="productList.aws", method=RequestMethod.GET)
-	public String productList() {
+	@RequestMapping(value="productList1.aws", method=RequestMethod.GET)
+	public String productList1() {
 		
-		return "WEB-INF/product/productList"; 
+		return "WEB-INF/product/productList1"; 
+	}
+	
+	@RequestMapping(value="productList2.aws", method=RequestMethod.GET)
+	public String productList2() {
+		
+		return "WEB-INF/product/productList2"; 
+	}
+	
+	@RequestMapping(value="productList3.aws", method=RequestMethod.GET)
+	public String productList3() {
+		
+		return "WEB-INF/product/productList3"; 
 	}
 	
 	@RequestMapping(value="productContent.aws", method=RequestMethod.GET)

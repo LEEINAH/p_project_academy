@@ -7,7 +7,6 @@
 <title>Knit</title>
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/css/mainpage.css" rel="stylesheet">
-<title>header</title>
 </head>
 <body>
 
@@ -15,9 +14,9 @@
 	<nav class="nav">
 		<div style="width: 10%;"></div>
 		<a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/user/userLogin.aws">로그인</a>
-		<a class="nav-link" href="#">장바구니</a>
+		<a class="nav-link" href="<%=request.getContextPath()%>/cart/cartList.aws">장바구니</a>
 		<a class="nav-link" href="#">마이페이지</a>
-		<a class="nav-link" href="#">Q&A</a>
+		<a class="nav-link" href="<%=request.getContextPath()%>/qnrBoard/qnaList.aws">Q&A</a>
 
 	</nav>
 
@@ -46,9 +45,9 @@
 	<!-- 메뉴 선택 -->
 	<div class="menu-select">
 		<ul class="menu-ul">
-			<li class="menu-li"><a href="<%=request.getContextPath()%>/product/productList.aws" class="menu-a">뜨개실</a></li>
-			<li class="menu-li"><a href="#" class="menu-a">단추/라벨/부자재</a></li>
-			<li class="menu-li"><a href="#" class="menu-a">바늘/도구</a></li>
+			<li class="menu-li"><a href="<%=request.getContextPath()%>/product/productList1.aws" class="menu-a">뜨개실</a></li>
+			<li class="menu-li"><a href="<%=request.getContextPath()%>/product/productList2.aws" class="menu-a">단추/라벨/부자재</a></li>
+			<li class="menu-li"><a href="<%=request.getContextPath()%>/product/productList3.aws" class="menu-a">바늘/도구</a></li>
 		</ul>
 	</div>
 

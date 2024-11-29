@@ -1,0 +1,215 @@
+@charset "UTF-8";
+
+/* 리뷰 작성 페이지 */
+.write-title-div {
+	display: flex;
+	border-bottom: 3px solid #1d1d1f;
+	margin: 0 auto;
+	width: 1200px;
+}
+
+.write-title-h2 {
+	font-size: 25px; 
+	font-weight: 600; 
+	color: #1d1d1f; 
+	padding: 70px 50px 20px;
+}
+
+.review-write-main {
+    margin: 0 auto;
+    width: 1200px;
+    padding-top: 30px;
+}
+
+.review-write-div {
+    width: 100%;
+}
+
+.review-write-div p {
+    width: 100px;
+    border-bottom: 1px solid lightgray;
+    font-size: 18px;
+}
+
+.review-write-div input {
+    border: 1px solid lightgray;
+    font-size: 18px;
+    width: 100%;
+    height: 50px; /* 제목은 단일 라인 */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px; /* 입력 시 여백 추가 */
+}
+
+.review-write-div textarea {
+    border: 1px solid lightgray;
+    font-size: 18px;
+    width: 100%;
+    height: 300px; /* 원하는 높이 설정 */
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px; /* 텍스트 내부 여백 추가 */
+    resize: none; /* 크기 조정 불가 (필요 시 제거 가능) */
+    overflow-wrap: break-word; /* 단어가 박스를 벗어나지 않게 처리 */
+}
+
+.review-picture-div {
+    display: flex;
+    margin: 0 auto;
+    width: 1200px;
+    padding-top: 30px;
+}
+
+.review-picture-div p {
+    width: 80px;
+    border-bottom: 1px solid lightgray;
+    font-size: 18px;
+}
+
+.review-star-div {
+	display: flex;
+    margin: 0 auto;
+    width: 1200px;
+    padding-top: 30px;
+}
+
+.review-star-div p {
+    width: 80px;
+    border-bottom: 1px solid lightgray;
+    font-size: 18px;
+}
+
+.review-save-div {
+	display: flex;
+    margin: 0 auto;
+    width: 1200px;
+    padding-top: 200px;
+}
+
+.review-save-div button {
+	width: 30%; 
+	height: 100%; 
+	margin: 0 auto; 
+	padding: 10px; 
+	background-color: #333;
+	color: white;
+	border: none; 
+	font-size: 16px; 
+	cursor: pointer; 
+	margin-bottom: 5px;
+}
+
+
+
+/* Q&A List 페이지 */
+.qna-title-div {
+	display: flex;
+	margin: 0 auto;
+	width: 1200px;
+	height: 180px;
+}
+
+.qna-title-div h2 {
+	font-size: 35px; 
+	font-weight: 600; 
+	color: #1d1d1f; 
+	margin: 0 auto;
+	padding: 70px;
+}
+
+.qna-list-div {
+	display: flex;
+	margin: 0 auto;
+	width: 1200px;
+}
+
+.qna-list-div th {
+	background-color: lightgray;
+	width: 1200px;
+	height: 60px;	
+}
+
+.qna-list-div td {
+	height: 60px;
+	border-bottom: 1px solid lightgray;
+}
+
+.num {
+	width: 10%; /* No는 좁게 */
+    text-align: center;
+}
+
+.title {
+	width: 50%; /* 제목이 가장 넓음 */	
+	text-align: center;
+}
+
+.writer {
+	width: 20%;
+    text-align: center;	
+}
+
+.w-data {
+	width: 20%;
+    text-align: center;
+}
+
+.num-td {
+	width: 10%; /* No는 좁게 */
+    text-align: center;
+}
+
+.title-td {
+	width: 50%; /* 제목이 가장 넓음 */	
+	text-align: center;
+}
+
+.writer-td {
+	width: 20%;
+    text-align: center;	
+}
+
+.w-data-td {
+	width: 20%;
+    text-align: center;
+}
+
+
+
+/* 문의 작성 페이지 */
+.qna-save-div {
+	display: flex;
+    margin: 0 auto;
+    width: 1200px;
+    padding-top: 50px;
+}
+
+.qna-save-div button {
+	width: 15%; 
+	height: 100%; 
+	margin: 0 auto; 
+	padding: 10px; 
+	background-color: #333;
+	color: white;
+	border: none; 
+	font-size: 16px; 
+	cursor: pointer; 
+	margin-bottom: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

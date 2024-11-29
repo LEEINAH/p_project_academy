@@ -27,10 +27,10 @@
 	<div style="height: 70px;"></div>
 	
 	<!-- 상품 종류 문구 -->
-	<div class="product-option1-div">
-		<h2 class="product-option1-h2">
-			<span class="product-option1-span">
-				뜨개실
+	<div class="product-option-div">
+		<h2 class="product-option-h2" style="font-size: 25px; font-weight: 600; color: #1d1d1f; padding-left: 385px; padding-bottom: 50px;">
+			<span class="product-option-span">
+				단추/라벨/부자재
 			</span>
 		</h2>
 	</div>
