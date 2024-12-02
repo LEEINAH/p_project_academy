@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "com.myaws.myapp.domain.*" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Knit 상품 상세 페이지</title>
 <link href="/resources/css/product.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script> 
+<!-- jquery CDN 주소 -->
 </head>
 
 <script>
@@ -24,7 +28,7 @@
 		<div style="padding-right: 120px;">
 		<li>
 			<div class="product-img">
-				<img src="/resources/img/product_detail1.PNG">
+				<img src="${pageContext.request.contextPath}/product//displayFile.aws?fileName=${pv.product_img1}">
 			</div>
 		</li>
 		</div>
@@ -36,7 +40,7 @@
 				  <!-- 오른쪽 제품 정보를 담은 영역 -->
 				  <div class="product-info">
 				    <!-- 제품 제목 -->
-				    <h1 class="product-title">메리노 코튼</h1>
+				    <h1 class="product-title">${pv.product_name}</h1>
 				
 				    <!-- 제품 설명 -->
 				    <p class="product-description">
@@ -48,7 +52,7 @@
 				      <!-- 미니샵 정보 -->
 				      <p><span class="label">미니샵</span><span class="shop-name">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Knit</span></p>
 				      <!-- 판매 가격 -->
-				      <p><span class="label">판매가</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9,000원</p>
+				      <p><span class="label">판매가&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>${pv.product_price}원</p>
 				      <!-- 브랜드 정보 -->
 				      <p><span class="label">브랜드</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Knit</p>
 				      <!-- 배송비 정보 -->

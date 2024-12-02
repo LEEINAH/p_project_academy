@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myaws.myapp.persistance.UserMapper"> 
+
+<insert id="userInsert" parameterType="uv">
+	insert into user(userid, userpwd, username, userphone, useremail) 
+	values(#{userid}, #{userpwd}, #{username}, #{userphone}, #{useremail})
+</insert>
+
+<select id="userLoginCheck" parameterType="String" resultType="uv">
+	SELECT * FROM user WHERE userid = #{userid}
+</select>
+
+</mapper>

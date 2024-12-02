@@ -7,7 +7,6 @@
 <title>Knit</title>
 <link href="/resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="/resources/css/mainpage.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-latest.min.js"></script>
 </head>
 <body>
 	

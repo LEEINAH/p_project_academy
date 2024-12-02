@@ -168,11 +168,31 @@
   width: 400px;
 }
 
+/* paging */
+.page {
+	margin: 50px 0 20px; 
+	text-align: center;
+}
 
+.page ul {
+	display: inline-block; 
+}
 
+.page li {
+	display: inline-block; 
+	width: 30px; 
+	height: 30px; 
+	cursor: pointer; 
+}
 
+.page .on {
+	background: #D0A9F5;  
+	color: white;
+}
 
-
+.page a {
+	color: #424242;
+}
 
 
 

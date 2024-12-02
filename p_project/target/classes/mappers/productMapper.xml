@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myaws.myapp.persistance.ProductMapper"> 
+
+<sql id="search">
+<if test="keyword != null">
+	and product_name like concat('%',#{keyword},'%')
+</if>
+</sql>
+
+<select id="productTotalCount" parameterType="scri" resultType="int">
+	SELECT COUNT(*) AS cnt
+	FROM product
+	WHERE delyn = 'N'
+	<include refid="search"/>
+</select>
+
+<select id="productSelectAll" parameterType="HashMap" resultType="pv">
+	SELECT * 
+    FROM product
+    WHERE delyn = 'N' AND category_code = 1
+    <include refid="search"/>
+    LIMIT #{startPageNum}, #{perPageNum}
+</select>
+
+<select id="productSelectOne" parameterType="int" resultType="pv"> <!-- parameterType : 받아오는 값, resultType : 넘기는 값 -->
+	SELECT *
+	FROM product 
+	WHERE delyn='N' 
+	AND product_key = #{product_key}
+</select>
+
+<update id="productViewCntUpdate" parameterType="int">
+	UPDATE product
+	SET view_cnt = view_cnt + 1
+	WHERE product_key = #{product_key}
+</update>
+
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

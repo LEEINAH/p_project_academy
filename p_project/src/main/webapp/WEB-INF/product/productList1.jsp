@@ -1,4 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import = "com.myaws.myapp.domain.*" %>   
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +13,9 @@
 <script>
     function handleImageClick() {
         // JavaScript 동작 정의
-        window.location.href = '<%=request.getContextPath()%>/product/productContent.aws';
+        window.location.href = '${pageContext.request.contextPath}/product/productContent.aws?product_key=${pv.product_key}';
     }
 </script>
-
-
-
-
 
 <body>
 	
@@ -52,89 +51,45 @@
 	</div>
 	
 	<div class="card-container" style="padding-bottom: 30px;">
-		<li class="best-product-li">
-			<div class="card">
-				<img src="/resources/img/best_sample1.jpg" alt="상품 이미지" onclick="handleImageClick()">
-			</div>
-			<div class="card-content">
-		        <h3 style="font-size: 17px; font-weight: bold; color: #424242;" onclick="handleImageClick()">베이비 알파카 실크모헤어</h3>
-		        <hr style="width: 300px;">
-		        <p>12,000원</p>
-		    </div>
-		</li>
-		<li class="best-product-li">
-			<div class="card">
-				<img src="/resources/img/best_sample2.jpg" alt="상품 이미지" onclick="handleImageClick()">
-			</div>
-			<div class="card-content">
-		        <h3 style="font-size: 17px; font-weight: bold; color: #424242;" onclick="handleImageClick()">밀라노 키드 모헤어</h3>
-		        <hr style="width: 300px;">
-		        <p>10,000원</p>
-		    </div>
-		</li>
-		<li class="best-product-li">
-			<div class="card">
-				<img src="/resources/img/best_sample3.jpg" alt="상품 이미지" onclick="handleImageClick()">
-			</div>
-			<div class="card-content">
-		        <h3 style="font-size: 17px; font-weight: bold; color: #424242;" onclick="handleImageClick()">몬디알 키드 모헤어</h3>
-		        <hr style="width: 300px;">
-		        <p>9,000원</p>
-		    </div>
-		</li>
-		<li class="best-product-li">
-			<div class="card">
-				<img src="/resources/img/best_sample4.jpg" alt="상품 이미지" onclick="handleImageClick()">
-			</div>
-			<div class="card-content">
-		        <h3 style="font-size: 17px; font-weight: bold; color: #424242;" onclick="handleImageClick()">버니</h3>
-		        <hr style="width: 300px;">
-		        <p>15,000원</p>
-		    </div>
-		</li>
+		<c:forEach items="${plist}" var="pv" varStatus="status">
+			<li class="best-product-li">
+				<div class="card">
+					<a href="${pageContext.request.contextPath}/product/productContent.aws?product_key=${pv.product_key}">
+					<img src="${pageContext.request.contextPath}/product//displayFile.aws?fileName=${pv.product_s_img}">
+					</a>
+				</div>
+				<div class="card-content">
+			        <a href="${pageContext.request.contextPath}/product/productContent.aws?product_key=${pv.product_key}" style="font-size: 17px; font-weight: bold; color: #424242;">${pv.product_name}</a>
+			        <hr style="width: 300px;">
+			        <p>${pv.product_price}원</p>
+			    </div>
+			</li>
+		</c:forEach>
 	</div>
 	
-	<div class="card-container">
-		<li class="best-product-li">
-			<div class="card">
-				<img src="/resources/img/best_sample1.jpg" alt="상품 이미지" onclick="handleImageClick()">
-			</div>
-			<div class="card-content">
-		        <h3 style="font-size: 17px; font-weight: bold; color: #424242;" onclick="handleImageClick()">베이비 알파카 실크모헤어</h3>
-		        <hr style="width: 300px;">
-		        <p>12,000원</p>
-		    </div>
-		</li>
-		<li class="best-product-li">
-			<div class="card">
-				<img src="/resources/img/best_sample2.jpg" alt="상품 이미지" onclick="handleImageClick()">
-			</div>
-			<div class="card-content">
-		        <h3 style="font-size: 17px; font-weight: bold; color: #424242;" onclick="handleImageClick()">밀라노 키드 모헤어</h3>
-		        <hr style="width: 300px;">
-		        <p>10,000원</p>
-		    </div>
-		</li>
-		<li class="best-product-li">
-			<div class="card">
-				<img src="/resources/img/best_sample3.jpg" alt="상품 이미지" onclick="handleImageClick()">
-			</div>
-			<div class="card-content">
-		        <h3 style="font-size: 17px; font-weight: bold; color: #424242;" onclick="handleImageClick()">몬디알 키드 모헤어</h3>
-		        <hr style="width: 300px;">
-		        <p>9,000원</p>
-		    </div>
-		</li>
-		<li class="best-product-li">
-			<div class="card">
-				<img src="/resources/img/best_sample4.jpg" alt="상품 이미지" onclick="handleImageClick()">
-			</div>
-			<div class="card-content">
-		        <h3 style="font-size: 17px; font-weight: bold; color: #424242;" onclick="handleImageClick()">버니</h3>
-		        <hr style="width: 300px;">
-		        <p>15,000원</p>
-		    </div>
-		</li>
+	<c:set var="queryParam" value="keyword=${pm.scri.keyword}&searchType=${pm.scri.searchType}"></c:set>
+	<div class="page">
+	
+		<ul>
+		
+		<c:if test="${pm.prev==true}">
+			<li>
+			<a href="${pageContext.request.contextPath}/product/productList1.aws?page=${pm.startPage-1}&${queryParam}">◁</a>
+			</li>
+		</c:if>
+		
+		<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
+			<li <c:if test="${i == pm.scri.page}">class='on'</c:if> >
+			<a href="${pageContext.request.contextPath}/product/productList1.aws?page=${i}&${queryParam}">${i}</a>
+			</li>
+		</c:forEach>
+		
+		<c:if test="${pm.next&&pm.endPage>0}">
+			<li><a href="${pageContext.request.contextPath}/product/productList1.aws?page=${pm.endPage+1}&${queryParam}">▷</a></li>
+		</c:if>
+	
+		</ul>
+		
 	</div>
 	
 	

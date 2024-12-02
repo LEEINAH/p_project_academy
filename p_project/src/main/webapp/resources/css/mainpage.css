@@ -404,6 +404,9 @@
     overflow: hidden; /* 슬라이드 효과 */
     position: relative;
     gap: 45px; /* 카드 간격 조정 (너무 크지 않도록) */
+    flex-wrap: wrap; /* 줄내림 가능하게 설정 */
+    max-width: 1335px; /* 최대 크기 지정 */
+    margin: 0 auto; /* 가운데 정렬 */
 }
 
 .card {
