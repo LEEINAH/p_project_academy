@@ -4,6 +4,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -43,32 +45,61 @@ public class ProductController {
 	@Resource(name="uploadPath")
 	private String uploadPath;
 	
-	@RequestMapping(value="productList1.aws", method=RequestMethod.GET)
-	public String productList1(SearchCriteria scri, Model model) {
+	@RequestMapping(value="productList.aws", method=RequestMethod.GET)
+	public String productList(SearchCriteria scri, Model model, 
+			@RequestParam("category_code") int category_code) {
 		
-		int cnt = productService.productTotalCount(scri);
-		
-		pm.setScri(scri);
-		pm.setTotalCount(cnt);
+		if (category_code == 0) {
 			
-		ArrayList<ProductVo> plist = productService.productSelectAll(scri);
+			int cnt1 = productService.productTotalCount(scri, 1);
+			int cnt2 = productService.productTotalCount(scri, 2);
+			int cnt3 = productService.productTotalCount(scri, 3);
 			
-		model.addAttribute("plist", plist);
-		model.addAttribute("pm", pm);
+			int cnt = cnt1+cnt2+cnt3;
+			
+			pm.setScri(scri);
+			pm.setTotalCount(cnt);
+			
+			ArrayList<ProductVo> plist1 = productService.productSelectAll(scri, 1);
+			ArrayList<ProductVo> plist2 = productService.productSelectAll(scri, 2);
+			ArrayList<ProductVo> plist3 = productService.productSelectAll(scri, 3);
+			
+			ArrayList<ProductVo> plist = new ArrayList<>();
+			
+			for (ProductVo pv : plist1) {
+				plist.add(pv);
+			}
+			
+			for (ProductVo pv : plist2) {
+				plist.add(pv);
+			}
+			
+			for (ProductVo pv : plist3) {
+				plist.add(pv);
+			}
+			
+			model.addAttribute("plist", plist);
+			model.addAttribute("pm", pm);
+			model.addAttribute("cnt", cnt);
+			model.addAttribute("category_code", category_code);
+			
+			return "WEB-INF/product/productList";
+		} else {
 		
-		return "WEB-INF/product/productList1"; 
-	}
-	
-	@RequestMapping(value="productList2.aws", method=RequestMethod.GET)
-	public String productList2() {
-		
-		return "WEB-INF/product/productList2"; 
-	}
-	
-	@RequestMapping(value="productList3.aws", method=RequestMethod.GET)
-	public String productList3() {
-		
-		return "WEB-INF/product/productList3"; 
+			int cnt = productService.productTotalCount(scri, category_code);
+			
+			pm.setScri(scri);
+			pm.setTotalCount(cnt);
+				
+			ArrayList<ProductVo> plist = productService.productSelectAll(scri, category_code);
+				
+			model.addAttribute("plist", plist);
+			model.addAttribute("pm", pm);
+			model.addAttribute("cnt", cnt);
+			model.addAttribute("category_code", category_code);
+			
+			return "WEB-INF/product/productList"; 
+		}
 	}
 	
 	@RequestMapping(value="productContent.aws", method=RequestMethod.GET)

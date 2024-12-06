@@ -14,12 +14,12 @@
 const email = /[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]$/i;
 
 //버튼을 눌렀을 때 check 함수 작동
-function check() {
+function joincheck() {
 	
 	// alert("check 들어옴");
 	
 	// 유효성 검사하기	
-	var fm = document.frm;
+	var fm = document.joinfrm;
 	
 	if (fm.userid.value == "") {
 		alert("아이디를 입력해주세요.");
@@ -97,7 +97,7 @@ function check() {
 	<div class="join-underline"></div>	
 	
 	<!-- 회원 가입 입력창 -->
-	<form class="signup-form" name="frm">
+	<form class="signup-form" name="joinfrm">
 		<div class="join-div">
 	            <label for="username">아이디</label>
 	            <input type="text" id="userid" name="userid" placeholder="아이디를 입력하세요">
@@ -122,7 +122,7 @@ function check() {
 	            <label for="phone">휴대전화</label>
 	            <input type="tel" id="userphone" name="userphone" placeholder="휴대전화 번호를 입력하세요">
 		</div>
-        <button type="button" onclick="check();">회원가입</button>
+        <button type="button" onclick="joincheck();">회원가입</button>
     </form>
     
     <!-- 여백 -->

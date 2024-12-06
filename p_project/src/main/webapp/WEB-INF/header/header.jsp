@@ -11,7 +11,20 @@
 </head>
 <body>
 
+<script>
+
+function check() {
 	
+	var fm = document.frm;
+	fm.action = "${pageContext.request.contextPath}/product/productList.aws?category_code=0"; 
+	// 가상 경로 지정 action은 처리하는 의미
+	fm.method = "get";
+	fm.submit();
+	
+	return;
+}
+
+</script>	
 
 	<!-- 네비게이션 바 (mainpage 상단) -->
 	<nav class="nav">
@@ -40,9 +53,10 @@
 		  <button type="button" class="btn btn-platform" onclick="location.href='<%=request.getContextPath()%>/community/communitymain.aws';">커뮤니티</button>
 		</div>
 		
-		<form class="d-flex" role="search" action="${pageContext.request.contextPath}/product/productList1.aws" method="get">
+		<form class="d-flex" role="search" name="frm" method="get">
 	    <input class="form-control-me-2" type="text" placeholder="Search" aria-label="Search" name="keyword">
-		    <button class="btn searchbtn" type="submit">
+	    <input type="hidden" name="category_code" value="0">
+		    <button class="btn searchbtn" type="button" onclick="check();">
 		    	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
 					<path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
 			  	</svg>
@@ -53,9 +67,9 @@
 	<!-- 메뉴 선택 -->
 	<div class="menu-select">
 		<ul class="menu-ul">
-			<li class="menu-li"><a href="<%=request.getContextPath()%>/product/productList1.aws" class="menu-a">뜨개실</a></li>
-			<li class="menu-li"><a href="<%=request.getContextPath()%>/product/productList2.aws" class="menu-a">단추/라벨/부자재</a></li>
-			<li class="menu-li"><a href="<%=request.getContextPath()%>/product/productList3.aws" class="menu-a">바늘/도구</a></li>
+			<li class="menu-li"><a href="${pageContext.request.contextPath}/product/productList.aws?category_code=1" class="menu-a">뜨개실</a></li>
+			<li class="menu-li"><a href="${pageContext.request.contextPath}/product/productList.aws?category_code=2" class="menu-a">단추/라벨/부자재</a></li>
+			<li class="menu-li"><a href="${pageContext.request.contextPath}/product/productList.aws?category_code=3" class="menu-a">바늘/도구</a></li>
 		</ul>
 	</div>
 

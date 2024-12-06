@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myaws.myapp.persistance.CartMapper"> 
+
+<insert id="cartInsert" parameterType="cv">
+<selectKey keyProperty="cart_key" resultType="int" order="AFTER"> <!-- insert를 하고 난 후(AFTER) bidx 최고값(MAX)를 찾겠다 -->
+	SELECT MAX(cart_key) AS cart_key
+	FROM CART
+</selectKey>
+	INSERT INTO CART(product_cnt,user_key,product_key)
+    value(1, #{user_key}, #{product_key})
+</insert>
+
+<select id="productSelectAll" parameterType="HashMap" resultType="cv">
+	SELECT c.*, p.product_img1, p.product_name, p.product_price
+    FROM cart c
+    JOIN product p
+    ON c.product_key = p.product_key
+    WHERE c.delyn = 'N' 
+    AND c.user_key = #{user_key}
+    ORDER BY c.cart_key desc
+    LIMIT #{startPageNum}, #{perPageNum}
+</select>
+
+<select id="productTotalCount" parameterType="HashMap" resultType="int">
+	SELECT COUNT(*) AS cnt
+	FROM cart
+	WHERE delyn = 'N' 
+	AND user_key = #{user_key}
+</select>
+
+
+
+</mapper>

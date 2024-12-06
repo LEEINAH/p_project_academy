@@ -5,6 +5,8 @@
 <typeAliases>
 	<typeAlias alias="uv" type="com.myaws.myapp.domain.UserVo"/>
 	<typeAlias alias="pv" type="com.myaws.myapp.domain.ProductVo"/>
+	<typeAlias alias="qv" type="com.myaws.myapp.domain.QnrBoardVo"/>
+	<typeAlias alias="cv" type="com.myaws.myapp.domain.CartVo"/>
 	<typeAlias alias="scri" type="com.myaws.myapp.domain.SearchCriteria"/>
 </typeAliases>
 </configuration>

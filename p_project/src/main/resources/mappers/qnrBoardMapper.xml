@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.myaws.myapp.persistance.QnrBoardMapper"> 
+
+<sql id="replyDelete">
+<if test="origin_num != qnrboard_key">
+	AND qnrboard_key = #{qnrboard_key}
+</if>
+</sql>
+
+<insert id="reviewInsert" parameterType="qv">
+<selectKey keyProperty="qnrboard_key" resultType="int" order="AFTER"> <!-- insert를 하고 난 후(AFTER) bidx 최고값(MAX)를 찾겠다 -->
+	SELECT MAX(qnrboard_key) AS qnrboard_key
+	FROM QNRBOARD
+</selectKey>
+	INSERT INTO QNRBOARD(subject, content, img, star, user_key, product_key, division)
+    value(#{subject}, #{content}, #{uploadedFilename}, #{star}, #{user_key}, #{product_key}, 'R')
+</insert>
+
+<select id="reviewSelectAll" parameterType="int" resultType="qv">
+	SELECT q.*, u.username
+    FROM qnrboard q
+    JOIN user u
+    ON q.user_key = u.user_key
+    WHERE q.division = 'R'
+    AND q.delyn = 'N'
+    AND q.product_key = #{0}
+    ORDER BY q.qnrboard_key DESC
+    LIMIT 0, #{1}
+</select>
+
+<select id="reviewTotalCnt" parameterType="int" resultType="int">
+	SELECT COUNT(*)
+	FROM qnrboard
+	WHERE division='R' AND delyn = 'N'
+	AND product_key = #{product_key}
+</select>
+
+
+
+<select id="qnaSelectAll" parameterType="HashMap" resultType="qv">
+	SELECT q.*, u.username 
+    FROM qnrboard q
+    JOIN user u
+    ON q.user_key = u.user_key
+    WHERE q.division = 'Q'
+    AND q.delyn = 'N' 
+    ORDER BY q.origin_num DESC, q.level_ ASC 
+    LIMIT #{startPageNum}, #{perPageNum}
+</select>
+
+<select id="qnaTotalCount" parameterType="scri" resultType="int">
+	SELECT COUNT(*) AS cnt
+	FROM qnrboard
+	WHERE division = 'Q' 
+	AND delyn = 'N'
+</select>
+
+<insert id="qnaInsert" parameterType="qv">
+<selectKey keyProperty="qnrboard_key" resultType="int" order="AFTER"> <!-- insert를 하고 난 후(AFTER) bidx 최고값(MAX)를 찾겠다 -->
+	SELECT MAX(qnrBoard_key) AS qnrBoard_key
+	FROM qnrboard
+</selectKey>
+	INSERT INTO QNRBOARD(subject, content, user_key, division, origin_num, level_, img)
+    VALUE(#{subject}, #{content}, #{user_key}, 'Q', null, 0, #{uploadedFilename})
+</insert>
+
+<update id="qnrBoard_keyUpdate" parameterType="int">
+	UPDATE QNRBOARD
+	SET origin_num = #{qnrboard_key}
+	WHERE qnrboard_key = #{qnrboard_key}
+</update>
+
+<select id="qnaSelectOne" parameterType="int" resultType="qv"> <!-- parameterType : 받아오는 값, resultType : 넘기는 값 -->
+	SELECT q.*, u.username 
+	FROM qnrboard q 
+	JOIN user u
+    ON q.user_key = u.user_key
+	WHERE q.division = 'Q' 
+	AND q.delyn = 'N' 
+	AND q.qnrboard_key = #{qnrboard_key}
+</select>
+
+<update id="qnaUpdate" parameterType="qv">
+	UPDATE QNRBOARD
+	SET subject=#{subject}, content=#{content}, img=#{uploadedFilename}, m_date=now() 
+    WHERE qnrboard_key=#{qnrboard_key} 
+    AND user_key = #{user_key}
+</update>
+
+<update id="qnaDelete" parameterType="qv">
+	UPDATE QNRBOARD
+	SET delyn = 'Y', m_date = NOW()
+	WHERE origin_num = #{origin_num}
+	<include refid="replyDelete"/>
+</update>
+
+<insert id="qnaReplyInsert" parameterType="qv">
+<selectKey keyProperty="qnrboard_key" resultType="int" order="AFTER"> <!-- insert를 하고 난 후(AFTER) qnrboard_key 최고값(MAX)를 찾겠다 -->
+	SELECT MAX(qnrboard_key) AS max_qnrboard_key
+	FROM QNRBOARD 
+</selectKey>
+	INSERT INTO QNRBOARD (subject, content, img, origin_num, user_key, division, level_)
+	VALUES(#{subject}, #{content}, #{uploadedFilename}, #{origin_num}, #{user_key}, 'Q', #{level_}+1)
+</insert>
+
+<select id="selectUserOriginNums" parameterType="int" resultType="int">
+	SELECT origin_num
+	FROM qnrboard
+	WHERE user_key = #{user_key}
+	and division = 'Q'
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

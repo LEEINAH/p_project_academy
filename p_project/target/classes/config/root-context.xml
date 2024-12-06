@@ -27,12 +27,14 @@
 		
    <!-- id는 이 빈을 참조할 때 사용할 이름. 다른곳에서 이 이름을 통해 이 빈에 접근할 수 있다.
    class는 사용할 클래스의 경로를 지정 -->
-   <bean id= "db" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-   <property name="driverClassName" value="com.mysql.cj.jdbc.Driver" />
-   <property name="url" value="jdbc:mysql://127.0.0.1:3306/project?useSSL=false&amp;serverTimezone=UTC&amp;allowPublicKeyRetrieval=true" />
-   <property name="username" value="root" />
-   <property name="password" value="1234" />
-   </bean>
+   <context:property-placeholder location="classpath:properties/db.properties"/>
+		
+	<bean id="db" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${db.driver}" />
+		<property name="url" value="${db.url}" />
+		<property name="username" value="${db.username}" />
+		<property name="password" value="${db.password}" />
+	</bean>	
 		
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="db" />

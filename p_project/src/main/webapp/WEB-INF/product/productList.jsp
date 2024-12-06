@@ -8,16 +8,34 @@
 <meta charset="UTF-8">
 <title>Knit 상품 목록 페이지</title>
 <link href="/resources/css/product.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
+<body>
 
 <script>
-    function handleImageClick() {
-        // JavaScript 동작 정의
-        window.location.href = '${pageContext.request.contextPath}/product/productContent.aws?product_key=${pv.product_key}';
-    }
-</script>
+$('#sortOption').change(function () {
+    const sortOption = $(this).val();
+    const categoryCode = $('#category_code').val();
 
-<body>
+    console.log("Ajax 요청 시작"); // 디버깅 메시지
+
+    $.ajax({
+        url: '/product/productList.aws',
+        type: 'GET',
+        data: {
+            category_code: categoryCode,
+            sortOption: sortOption
+        },
+        success: function (response) {
+            console.log("Ajax 요청 성공:", response); // 서버 응답 출력
+            $('#productList').html(response); // 응답 데이터를 리스트에 삽입
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            console.error("Ajax 요청 실패:", textStatus, errorThrown); // 에러 출력
+        }
+    });
+});
+</script>
 	
 	<!-- header -->
 	<jsp:include page="/WEB-INF/header/header.jsp" />
@@ -29,7 +47,18 @@
 	<div class="product-option-div">
 		<h2 class="product-option-h2" style="font-size: 25px; font-weight: 600; color: #1d1d1f; padding-left: 385px; padding-bottom: 50px;">
 			<span class="product-option-span">
-				뜨개실
+				<c:if test="${category_code == 0}">
+					'${pm.scri.keyword}' 의 검색 결과
+				</c:if>
+				<c:if test="${category_code == 1}">
+					뜨개실
+				</c:if>
+				<c:if test="${category_code == 2}">
+					단추/라벨/부자재
+				</c:if>
+				<c:if test="${category_code == 3}">
+					바늘/도구
+				</c:if>
 			</span>
 		</h2>
 	</div>
@@ -37,15 +66,14 @@
 	<!-- List -->
 	<div class="product-list-main">
 		<div class="list-top-rightdiv">
-			<strong>150</strong>
+			<strong>${cnt}</strong>
 			<span>Items</span>
 		</div>
 		<div class="list-top-leftdiv">
-			<select>
+			<select id="sortOption">
 				<option value="option1" selected>신상품 순</option>
-				<option value="option2">가격 낮은순</option>
-				<option value="option3">가격 높은순</option>
-				<option value="option4">후기 많은순</option>
+				<option value="option2">가격 낮은 순</option>
+				<option value="option3">가격 높은 순</option>
 			</select>
 		</div>
 	</div>
@@ -74,19 +102,20 @@
 		
 		<c:if test="${pm.prev==true}">
 			<li>
-			<a href="${pageContext.request.contextPath}/product/productList1.aws?page=${pm.startPage-1}&${queryParam}">◁</a>
+			<a href="${pageContext.request.contextPath}/product/productList.aws?category_code=${category_code}&page=${pm.startPage-1}&${queryParam}">◁</a>
 			</li>
 		</c:if>
 		
 		<c:forEach var="i" begin="${pm.startPage}" end="${pm.endPage}" step="1">
 			<li <c:if test="${i == pm.scri.page}">class='on'</c:if> >
-			<a href="${pageContext.request.contextPath}/product/productList1.aws?page=${i}&${queryParam}">${i}</a>
+			<a href="${pageContext.request.contextPath}/product/productList.aws?category_code=${category_code}&page=${i}&${queryParam}">${i}</a>
 			</li>
 		</c:forEach>
 		
 		<c:if test="${pm.next&&pm.endPage>0}">
-			<li><a href="${pageContext.request.contextPath}/product/productList1.aws?page=${pm.endPage+1}&${queryParam}">▷</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/productList.aws?category_code=${category_code}&page=${pm.endPage+1}&${queryParam}">▷</a></li>
 		</c:if>
+		
 	
 		</ul>
 		

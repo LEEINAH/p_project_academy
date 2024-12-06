@@ -3,7 +3,7 @@ package com.myaws.myapp.domain;
 public class SearchCriteria extends Criteria{
 
 	private String searchType; 
-	private String keyword;  
+	private String keyword; 
 	
 	public String getSearchType() {
 		return searchType;

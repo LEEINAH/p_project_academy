@@ -135,12 +135,10 @@
 /* 메뉴 선택 */
 
 .menu-select {
-  	height: 100%;
   	border: 1px solid lightgray;
 }
 
 .menu-ul {
-	height: 100%;
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;

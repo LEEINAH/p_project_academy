@@ -31,6 +31,8 @@ public class UserController {
 	@RequestMapping(value="userLogin.aws", method=RequestMethod.GET)
 	public String userLogin() {
 		
+		System.out.println("로그인 페이지 들어왔나?");
+		
 		return "WEB-INF/user/userLogin"; 
 	}
 	
@@ -41,7 +43,6 @@ public class UserController {
 			RedirectAttributes rttr, HttpSession session) {
 
 		UserVo uv = userService.userLoginCheck(userid);
-		System.out.println("controller uv =====> " + uv);
 		// 저장된 비밀번호를 가져온다
 		
 		String path ="";
@@ -54,6 +55,8 @@ public class UserController {
 				rttr.addAttribute("userId", uv.getUserid());
 				rttr.addAttribute("userName", uv.getUsername());
 				
+				session.setAttribute("grade", uv.getGrade());
+				
 				logger.info("saveUrl : " + session.getAttribute("saveUrl"));
 				
 				if (session.getAttribute("saveUrl") != null) {
@@ -63,10 +66,16 @@ public class UserController {
 				}
 				
 			} else { // 일치하지 않으면 로그인 페이지로
+				rttr.addAttribute("user_key", "");
+				rttr.addAttribute("userId", "");
+				rttr.addAttribute("userName", "");
 				rttr.addFlashAttribute("msg", "아이디/비밀번호를 확인해 주세요.");
 				path = "redirect:/user/userLogin.aws";
 			}
 		} else {
+			rttr.addAttribute("user_key", "");
+			rttr.addAttribute("userId", "");
+			rttr.addAttribute("userName", "");
 			rttr.addFlashAttribute("msg", "해당하는 아이디가 없습니다.");
 			path = "redirect:/user/userLogin.aws";
 		}

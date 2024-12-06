@@ -2,6 +2,8 @@ package com.myaws.myapp.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,13 +26,14 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public ArrayList<ProductVo> productSelectAll(SearchCriteria scri) {
+	public ArrayList<ProductVo> productSelectAll(SearchCriteria scri, int category_code) {
 		
 		HashMap<String,Object> hm = new HashMap<String,Object>();
 		hm.put("startPageNum", (scri.getPage()-1)*scri.getPerPageNum());
 		hm.put("searchType", scri.getSearchType());
 		hm.put("keyword", scri.getKeyword());
-		hm.put("perPageNum", scri.getPerPageNum());		
+		hm.put("perPageNum", scri.getPerPageNum());
+		hm.put("category_code", category_code);
 		
 		ArrayList<ProductVo> plist = pm.productSelectAll(hm);
 		
@@ -38,9 +41,16 @@ public class ProductServiceImpl implements ProductService {
 	}
 	
 	@Override
-	public int productTotalCount(SearchCriteria scri) {
+	public int productTotalCount(SearchCriteria scri, int category_code) {
 		
-		int cnt = pm.productTotalCount(scri);
+		HashMap<String,Object> hm = new HashMap<String,Object>();
+		hm.put("startPageNum", (scri.getPage()-1)*scri.getPerPageNum());
+		hm.put("searchType", scri.getSearchType());
+		hm.put("keyword", scri.getKeyword());
+		hm.put("perPageNum", scri.getPerPageNum());
+		hm.put("category_code", category_code);
+		
+		int cnt = pm.productTotalCount(hm);
 		return cnt;
 	}
 	
@@ -57,4 +67,5 @@ public class ProductServiceImpl implements ProductService {
 		int cnt = pm.productViewCntUpdate(product_key);
 		return cnt;
 	}
+	
 }

@@ -11,18 +11,32 @@
 </if>
 </sql>
 
-<select id="productTotalCount" parameterType="scri" resultType="int">
+<select id="productTotalCount" parameterType="HashMap" resultType="int">
 	SELECT COUNT(*) AS cnt
 	FROM product
-	WHERE delyn = 'N'
+	WHERE delyn = 'N' AND category_code = #{category_code}
 	<include refid="search"/>
 </select>
 
 <select id="productSelectAll" parameterType="HashMap" resultType="pv">
 	SELECT * 
     FROM product
-    WHERE delyn = 'N' AND category_code = 1
+    WHERE delyn = 'N' AND category_code = #{category_code}
     <include refid="search"/>
+    <choose>
+        <when test="sortOption == 'option1'">
+            ORDER BY product_key DESC
+        </when>
+        <when test="sortOption == 'option2'">
+            ORDER BY product_key ASC
+        </when>
+        <when test="sortOption == 'option3'">
+            ORDER BY product_price DESC
+        </when>
+        <otherwise>
+            ORDER BY product_key DESC
+        </otherwise>
+    </choose>
     LIMIT #{startPageNum}, #{perPageNum}
 </select>
 

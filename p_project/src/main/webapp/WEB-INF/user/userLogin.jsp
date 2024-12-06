@@ -19,9 +19,10 @@ if (msg != "") {
 	out.println("alert('"+msg+"')");
 }
 %>
+
 // 아이디 비밀번호 유효성 검사
-function check() {
-	// 이름으로 객체 찾기
+function logincheck() {
+	
 	let userid = document.getElementsByName("userid");
 	let userpwd = document.getElementsByName("userpwd");
 	// alert(memberid[0].value);
@@ -37,7 +38,7 @@ function check() {
 		return;
 	}
 	
-	var fm = document.frm;
+	var fm = document.loginfrm;
 	fm.action = "<%=request.getContextPath()%>/user/userLoginAction.aws"; 
 	// 가상 경로 지정 action은 처리하는 의미
 	fm.method = "post";
@@ -68,20 +69,16 @@ function check() {
 	<!-- Login 밑줄 -->
 	<div class="login-underline"></div>	
 	
-	<form name="frm">
+	<form name="loginfrm">
 	<!-- Login 입력창 -->
 	 <div class="container">
 	        <div class="login-box">
-	            <form action="/main" method="post">
-	                <input type="text" name="userid" placeholder="아이디"  >
-	                <input type="password" name="userpwd" placeholder="비밀번호">
-	            </form>
-	            
-	        <div class="links">
-                <button type="button" name="btn" value="로그인" onclick="check();">로그인</button>
-                <button type="button" onclick="location.href='<%=request.getContextPath()%>/user/userJoin.aws';">회원가입</button>
-            </div>
-	            
+	            <input type="text" name="userid" placeholder="아이디"  >
+	            <input type="password" name="userpwd" placeholder="비밀번호">
+		        <div class="links">
+	                <button type="button" name="btn" onclick="logincheck();">로그인</button>
+	                <button type="button" onclick="location.href='<%=request.getContextPath()%>/user/userJoin.aws';">회원가입</button>
+	            </div>  
             </div>
      </div>
     </form>

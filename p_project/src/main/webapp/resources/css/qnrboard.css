@@ -161,7 +161,7 @@
 
 .title-td {
 	width: 50%; /* 제목이 가장 넓음 */	
-	text-align: center;
+	padding-left: 100px;
 }
 
 .writer-td {
@@ -198,18 +198,96 @@
 }
 
 
+/* paging */
+.page {
+	margin: 50px 0 20px; 
+	text-align: center;
+}
 
+.page ul {
+	display: inline-block; 
+}
 
+.page li {
+	display: inline-block; 
+	width: 30px; 
+	height: 30px; 
+	cursor: pointer; 
+}
 
+.page .on {
+	background: #D0A9F5;  
+	color: white;
+}
 
+.page a {
+	color: #424242;
+}
 
+/* QnA Content 페이지 */
+article {
+	margin: 0 auto; 
+	width: 1200px;
+}
 
+.qnacontent-hr { 
+	width: 1200px;
+}
 
+.qna-btnBox-main {
+    display: flex; /* Flexbox로 정렬 */
+    justify-content: space-between; /* 양쪽 정렬 */
+    align-items: center; /* 수직 가운데 정렬 */
+    width: 1200px; /* 버튼들이 컨테이너를 채우도록 설정 */
+    margin: 0 auto;
+}
 
+.qna-btnBox1 {
+    display: flex; /* 버튼을 가로로 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+}
 
+.qna-btnBox2 {
+    display: flex; /* 버튼을 가로로 정렬 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    gap: 10px; /* 버튼 간격 설정 */
+}
 
+.btn {
+    padding: 8px 16px; /* 버튼에 여백 추가 */
+    text-decoration: none; /* 링크의 기본 밑줄 제거 */
+    background-color: #007bff; /* 버튼 색상 */
+    color: white; /* 글자 색상 */
+    border-radius: 4px; /* 둥근 모서리 */
+    transition: background-color 0.3s; /* 호버 애니메이션 */
+    border: 1px solid lightgray;
+}
 
+.btn:hover {
+    background-color: #D0A9F5; /* 호버 시 색상 */
+}
 
+.detailcontent-main {
+    display: flex; /* Flexbox로 정렬 */
+    justify-content: space-between; /* 양쪽 정렬 */
+    width: 1200px; /* 버튼들이 컨테이너를 채우도록 설정 */
+    margin: 0 auto;
+    height: 300px;
+}
+
+.content {
+	margin-top: 50px;
+    display: flex; /* 버튼을 가로로 정렬 */
+    justify-content: flex-start; /* 왼쪽 정렬 */
+    width: 80%;
+}
+
+.w_date {
+    display: flex; /* 버튼을 가로로 정렬 */
+    justify-content: flex-end; /* 오른쪽 정렬 */
+    gap: 10px; /* 버튼 간격 설정 */
+    width: 20%;
+}
 
 
 

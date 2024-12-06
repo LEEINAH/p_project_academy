@@ -42,6 +42,11 @@
 		</interceptor>	
 		<interceptor>
 			<mapping path="/cart/cartList.aws"/>
+			<mapping path="/cart/cartInsert.aws"/>
+			<mapping path="/qnrBoard/reviewWrite.aws"/>
+			<mapping path="/qnrBoard/qnaWrite.aws"/>
+			<mapping path="/qnrBoard/qnaModify.aws"/>
+			<mapping path="/qnrBoard/qnaContent.aws"/>
 			<beans:ref bean="authInterceptor"/>
 		</interceptor>	
 	</interceptors>

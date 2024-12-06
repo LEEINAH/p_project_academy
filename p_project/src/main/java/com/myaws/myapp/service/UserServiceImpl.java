@@ -29,7 +29,6 @@ public class UserServiceImpl implements UserService {
 	public UserVo userLoginCheck(String userId) {
 		
 		UserVo uv = um.userLoginCheck(userId);
-		System.out.println("impl uv =====> " + uv);
 
 		return uv;
 	}
